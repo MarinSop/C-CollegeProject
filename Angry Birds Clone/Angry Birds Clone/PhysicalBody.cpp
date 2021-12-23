@@ -28,7 +28,37 @@ b2Vec2 PhysicalBody::getPositionScaled()
 	return b2Vec2(_body->GetPosition().x*SCALE,_body->GetPosition().y*SCALE);
 }
 
+float PhysicalBody::getAngle()
+{
+	return _body->GetAngle();;
+}
+
+b2World* PhysicalBody::getWorld()
+{
+	return _body->GetWorld();;
+}
+
+b2Vec2 PhysicalBody::getLinerVelocity()
+{
+	return _body->GetLinearVelocity();
+}
+
+b2Body* PhysicalBody::bd()
+{
+	return _body;
+}
+
 void PhysicalBody::setPosition(b2Vec2 pos)
 {
 
+}
+
+void PhysicalBody::setAwake(bool state)
+{
+	_body->SetAwake(state);
+}
+
+void PhysicalBody::applyImpulse(b2Vec2 vec)
+{
+	_body->ApplyLinearImpulseToCenter(vec, true);
 }

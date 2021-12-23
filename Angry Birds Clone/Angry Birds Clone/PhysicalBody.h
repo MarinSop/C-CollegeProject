@@ -10,7 +10,15 @@ public:
 
 	b2Vec2 getPosition();
 	b2Vec2 getPositionScaled();
+	float getAngle();
+	b2World* getWorld();
+	b2Vec2 getLinerVelocity();
+	b2Body* bd();
 	void setPosition(b2Vec2 pos);
+
+	void setAwake(bool state);
+
+	void applyImpulse(b2Vec2 vec);
 
 private:
 	b2BodyDef* _bodyDef;

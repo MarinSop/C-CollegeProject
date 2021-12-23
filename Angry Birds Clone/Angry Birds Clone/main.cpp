@@ -3,6 +3,7 @@
 #include "box2d/box2d.h"
 #include "Game.h"
 #include "PhysicalBody.h"
+#include "Bird.h"
 #define SCALE 30.0f
 
 int main()
@@ -12,7 +13,6 @@ int main()
     Game* game = new Game();
     b2Vec2 gravity(0.0f, 9.81f);
     b2World world(gravity);
-    PhysicalBody* birdBody = new PhysicalBody(&world, b2_dynamicBody, b2Vec2(500.0f, 0.0f), b2Vec2(10.0f, 10.0f));
     PhysicalBody* groundBody = new PhysicalBody(&world, b2_staticBody, b2Vec2(500.0f, 700.0f), b2Vec2(700.0f, 10.0f));
 
     sf::RectangleShape ground(sf::Vector2f(700.f, 10.f));
@@ -20,10 +20,8 @@ int main()
     ground.setPosition(sf::Vector2f(groundBody->getPositionScaled().x, groundBody->getPositionScaled().y));
     ground.setOrigin(sf::Vector2f(700 / 2, 10 / 2));
 
-    sf::RectangleShape bird(sf::Vector2f(10.f, 10.f));
-    bird.setFillColor(sf::Color::Blue);
-    bird.setOrigin(sf::Vector2f(10.0f / 2, 10.0f / 2));
-    bird.setPosition(sf::Vector2f(birdBody->getPositionScaled().x, birdBody->getPositionScaled().y));
+    Bird red = Bird(&window,"Sprites/red.png",&world, b2_dynamicBody, b2Vec2(100.0f, 300.0f), b2Vec2(32.0f, 32.0f));
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -36,8 +34,8 @@ int main()
         world.Step(1 / 60.f, 8, 3);
 
         window.clear();
-        bird.setPosition(sf::Vector2f(birdBody->getPositionScaled().x,birdBody->getPositionScaled().y));
-        window.draw(bird);
+        red.update();
+        red.draw();
         window.draw(ground);
         window.display();
     }
