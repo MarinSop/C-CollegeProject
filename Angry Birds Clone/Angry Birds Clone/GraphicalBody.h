@@ -4,6 +4,7 @@ class GraphicalBody
 {
 public:
 	GraphicalBody(std::string str,sf::Vector2f position, sf::Vector2f size);
+	GraphicalBody(sf::Color color, sf::Vector2f position, sf::Vector2f size);
 	GraphicalBody(std::string str, sf::Vector2f position,sf::Vector2f size, float radius);
 	~GraphicalBody();
 
@@ -15,6 +16,7 @@ public:
 private:
 	sf::Texture* _tex;
 	sf::Sprite* _sprite;
+	sf::RectangleShape* _noTexBody;
 	sf::RectangleShape* _collision;
 	sf::CircleShape* _circleCollison;
 	sf::Vector2f _size;

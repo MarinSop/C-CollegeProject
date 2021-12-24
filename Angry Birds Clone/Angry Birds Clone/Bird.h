@@ -1,8 +1,6 @@
 #pragma once
 #include "PhysicalBody.h"
 #include "GraphicalBody.h"
-#include <SFML/Graphics.hpp>
-#include <iostream>
 class Bird
 {
 public:

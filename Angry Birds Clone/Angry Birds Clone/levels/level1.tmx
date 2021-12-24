@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="2021.03.23" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="6">
+ <objectgroup id="2" name="wood">
+  <object id="1" name="wood" type="dynamic" x="509.082" y="451.893" width="10" height="200"/>
+  <object id="3" name="wood" type="dynamic" x="507.768" y="440.742" width="250" height="10"/>
+  <object id="4" name="wood" type="dynamic" x="745.999" y="453.835" width="10" height="200"/>
+ </objectgroup>
+ <objectgroup id="3" name="stone">
+  <object id="5" type="dynamic" x="506.786" y="653.552" width="250" height="10"/>
+ </objectgroup>
+</map>
