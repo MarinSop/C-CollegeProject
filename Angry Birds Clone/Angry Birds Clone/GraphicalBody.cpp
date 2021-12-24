@@ -15,6 +15,25 @@ GraphicalBody::GraphicalBody(std::string str, sf::Vector2f position, sf::Vector2
 	_collision->setFillColor(sf::Color::Transparent);
 	_collision->setOutlineColor(sf::Color::Green);
 	_collision->setOutlineThickness(2.0f);
+	_circleCollison = nullptr;
+}
+
+GraphicalBody::GraphicalBody(std::string str, sf::Vector2f position,sf::Vector2f size, float radius)
+{
+	_tex = new sf::Texture();
+	_tex->loadFromFile(str);
+	_sprite = new sf::Sprite(*_tex);
+	_circleCollison = new sf::CircleShape();
+	_sprite->setOrigin(_tex->getSize().x / 2, _tex->getSize().y / 2);
+	_sprite->setPosition(sf::Vector2f(position.x, position.y));
+	_sprite->setScale((1.0f / _tex->getSize().x) * size.x, (1.0f / _tex->getSize().y) * size.y);
+	_circleCollison->setRadius(radius/2);
+	_circleCollison->setOrigin(size.x/2,size.y/2);
+	_circleCollison->setFillColor(sf::Color::Transparent);
+	_circleCollison->setOutlineColor(sf::Color::Green);
+	_circleCollison->setOutlineThickness(2.0f);
+
+	_collision = nullptr;
 }
 
 GraphicalBody::~GraphicalBody()
@@ -22,12 +41,16 @@ GraphicalBody::~GraphicalBody()
 	delete _collision;
 	delete _sprite;
 	delete _tex;
+	delete _circleCollison;
 }
 
 void GraphicalBody::setPosition(sf::Vector2f pos)
 {
 	_sprite->setPosition(pos);
-	_collision->setPosition(pos);
+	if(_collision)
+		_collision->setPosition(pos);
+	if (_circleCollison)
+		_circleCollison->setPosition(pos);
 }
 
 sf::Vector2f GraphicalBody::getPosition()
@@ -43,12 +66,18 @@ sf::Vector2f GraphicalBody::getSize()
 void GraphicalBody::setRotation(float angle)
 {
 	_sprite->setRotation(angle);
-	_collision->setRotation(angle);
+	if(_collision)
+		_collision->setRotation(angle);
+	if (_circleCollison)
+		_circleCollison->setRotation(angle);
 }
 
 void GraphicalBody::draw(sf::RenderWindow& win)
 {
 	win.draw(*_sprite);
-	win.draw(*_collision);
+	if(_collision)
+		win.draw(*_collision);
+	if (_circleCollison)
+		win.draw(*_circleCollison);
 }
 

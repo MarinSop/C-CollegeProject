@@ -154,14 +154,18 @@
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GraphicalBody.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PhysicalBody.cpp" />
+    <ClCompile Include="Slingshot.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bird.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GraphicalBody.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="PhysicalBody.h" />
+    <ClInclude Include="Slingshot.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
