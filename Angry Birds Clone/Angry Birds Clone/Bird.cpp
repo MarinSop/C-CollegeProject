@@ -67,6 +67,7 @@ void Bird::setUsed(bool state)
 
 bool Bird::readyToDelete()
 {
+
 	if (_used && !_physicalBody->isAwake())
 	{
 		if (_selfDestructTimerCurrent >= _selfDestructTimerMax)
@@ -76,6 +77,8 @@ bool Bird::readyToDelete()
 		else
 			_selfDestructTimerCurrent += 1 / 60.0f;
 	}
+	else if (_used && _physicalBody->getPositionScaled().y > _win->getSize().y)
+		return true;
 	return false;
 }
 

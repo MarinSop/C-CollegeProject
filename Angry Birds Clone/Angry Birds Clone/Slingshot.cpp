@@ -55,7 +55,8 @@ Slingshot::~Slingshot()
 	delete _texMain;
 	delete _spriteOther;
 	delete _texOther;
-	for (int i = 0; i < _birds.size(); i++)
+	int birdSize = _birds.size();
+	for (int i = 0; i < birdSize; i++)
 	{
 		delete _birds[i];
 	}
