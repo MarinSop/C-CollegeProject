@@ -1,11 +1,12 @@
 #pragma once
 #include <box2d/box2d.h>
+#include "UserData.h"
 #define SCALE 30.0f
 class PhysicalBody
 {
 public:
-	PhysicalBody(b2World* world,b2BodyType type,b2Vec2 position,b2Vec2 size);
-	PhysicalBody(b2World* world, b2BodyType type, b2Vec2 position, float radius);
+	PhysicalBody(b2World* world,b2BodyType type,b2Vec2 position,b2Vec2 size,UserData* objPointer = NULL);
+	PhysicalBody(b2World* world, b2BodyType type, b2Vec2 position, float radius, UserData* objPointer = NULL);
 	~PhysicalBody();
 
 
@@ -20,7 +21,6 @@ public:
 	void setAwake(bool state);
 	bool isAwake();
 	void setEnabled(bool state);
-
 
 	void applyImpulse(b2Vec2 vec);
 

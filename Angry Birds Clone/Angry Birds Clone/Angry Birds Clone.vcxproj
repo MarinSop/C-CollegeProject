@@ -158,6 +158,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MyContactListener.cpp" />
     <ClCompile Include="PhysicalBody.cpp" />
     <ClCompile Include="Slingshot.cpp" />
     <ClCompile Include="tinyxml\tinystr.cpp" />
@@ -172,10 +173,12 @@
     <ClInclude Include="GraphicalBody.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="MyContactListener.h" />
     <ClInclude Include="PhysicalBody.h" />
     <ClInclude Include="Slingshot.h" />
     <ClInclude Include="tinyxml\tinystr.h" />
     <ClInclude Include="tinyxml\tinyxml.h" />
+    <ClInclude Include="UserData.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

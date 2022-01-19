@@ -51,7 +51,7 @@ void Level::createLevel(std::string str)
 					b2Vec2 size(width, height);
 					if (objectGroupName == "wood")
 					{
-						Entity* entity = new Entity(_world, _win, woodHealth, "Sprites/wood.png", type, pos, size);
+						Entity* entity = new Entity(_world, _win, woodHealth, "Sprites/wood.png", type, pos, size,"wood");
 						_woods.push_back(entity);
 					}
 					else if (objectGroupName == "stone")

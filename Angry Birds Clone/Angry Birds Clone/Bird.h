@@ -28,6 +28,6 @@ private:
 	float _selfDestructTimerCurrent = 0.0f;
 	bool _used = false;
 	bool _ready = false;
-
+	float damage = 100.0f;
 };
 

@@ -5,6 +5,7 @@
 #include "Level.h"
 #include "Slingshot.h"
 #include "InputManager.h"
+#include "MyContactListener.h"
 #define SCALE 30.0f
 
 int main()
@@ -14,6 +15,8 @@ int main()
     Game* game = new Game();
     b2Vec2 gravity(0.0f, 9.81f);
     b2World world(gravity);
+    MyContactListener* myContactListener = new MyContactListener();
+    world.SetContactListener(myContactListener);
 
     InputManager input;
     Level lvl = Level("levels/level1.tmx",&world,&window,&input);

@@ -1,21 +1,23 @@
 #include "PhysicalBody.h"
 
-PhysicalBody::PhysicalBody(b2World* world, b2BodyType type, b2Vec2 position, b2Vec2 size)
+PhysicalBody::PhysicalBody(b2World* world, b2BodyType type, b2Vec2 position, b2Vec2 size,UserData* objPointer)
 {
 	_bodyDef = new b2BodyDef();
 	_bodyDef->type = type;
 	_bodyDef->position.Set(position.x / SCALE, position.y / SCALE);
+	_bodyDef->userData.pointer = reinterpret_cast<uintptr_t>(objPointer);
 	_body = world->CreateBody(_bodyDef);
 	_shape = new b2PolygonShape();
 	_shape->SetAsBox((size.x / 2) / SCALE, (size.y / 2) / SCALE);
 	_body->CreateFixture(_shape, 1.0f);
 	_circleShape = nullptr;
 }
-PhysicalBody::PhysicalBody(b2World* world, b2BodyType type, b2Vec2 position, float radius)
+PhysicalBody::PhysicalBody(b2World* world, b2BodyType type, b2Vec2 position, float radius, UserData* objPointer)
 {
 	_bodyDef = new b2BodyDef();
 	_bodyDef->type = type;
 	_bodyDef->position.Set(position.x / SCALE, position.y / SCALE);
+	_bodyDef->userData.pointer = reinterpret_cast<uintptr_t>(objPointer);
 	_body = world->CreateBody(_bodyDef);
 	_circleShape = new b2CircleShape();
 	_circleShape->m_radius = radius/SCALE/2.0f;

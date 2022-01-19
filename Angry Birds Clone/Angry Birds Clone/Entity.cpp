@@ -1,19 +1,21 @@
 #include "Entity.h"
 
-Entity::Entity(b2World* world, sf::RenderWindow* win,float health, std::string loc, b2BodyType type, b2Vec2 position, b2Vec2 size)
+Entity::Entity(b2World* world, sf::RenderWindow* win,float health, std::string loc, b2BodyType type, b2Vec2 position, b2Vec2 size,std::string data)
 {
 	_world = world;
 	_win = win;
-	_physicalBody = new PhysicalBody(_world, type, position, size);
+	_data = new UserData(this, data);
+	_physicalBody = new PhysicalBody(_world, type, position, size,_data);
 	_graphicalBody = new GraphicalBody(loc, sf::Vector2f(position.x, position.y), sf::Vector2f(size.x, size.y));
 	_maxHealth = health;
 }
 
-Entity::Entity(b2World* world, sf::RenderWindow* win, float health, std::string loc, b2BodyType type, b2Vec2 position, b2Vec2 size, float radius)
+Entity::Entity(b2World* world, sf::RenderWindow* win, float health, std::string loc, b2BodyType type, b2Vec2 position, b2Vec2 size, float radius,std::string data)
 {
 	_world = world;
 	_win = win;
-	_physicalBody = new PhysicalBody(_world, type, position,radius);
+	_data = new UserData(this,data);
+	_physicalBody = new PhysicalBody(_world, type, position,radius,_data);
 	_graphicalBody = new GraphicalBody(loc, sf::Vector2f(position.x, position.y), sf::Vector2f(size.x, size.y),radius);
 	_maxHealth = health;
 }
@@ -31,6 +33,7 @@ Entity::~Entity()
 {
 	delete _graphicalBody;
 	delete _physicalBody;
+	delete _data;
 }
 
 void Entity::update()

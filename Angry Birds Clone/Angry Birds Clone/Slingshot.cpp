@@ -44,6 +44,8 @@ Slingshot::Slingshot(sf::RenderWindow* win,InputManager* input, b2World* world, 
 		sf::CircleShape point;
 		point.setFillColor(sf::Color::White);
 		point.setRadius(radius);
+		point.setOutlineColor(sf::Color::Black);
+		point.setOutlineThickness(1);
 		point.setOrigin(sf::Vector2f(radius / 2.0f, radius / 2.0f));
 		_trajectoryPoints.push_back(point);
 	}
