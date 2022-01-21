@@ -8,6 +8,7 @@ Entity::Entity(b2World* world, sf::RenderWindow* win,float health, std::string l
 	_physicalBody = new PhysicalBody(_world, type, position, size,_data);
 	_graphicalBody = new GraphicalBody(loc, sf::Vector2f(position.x, position.y), sf::Vector2f(size.x, size.y));
 	_maxHealth = health;
+	_currentHealth = _maxHealth;
 }
 
 Entity::Entity(b2World* world, sf::RenderWindow* win, float health, std::string loc, b2BodyType type, b2Vec2 position, b2Vec2 size, float radius,std::string data)
@@ -18,6 +19,7 @@ Entity::Entity(b2World* world, sf::RenderWindow* win, float health, std::string 
 	_physicalBody = new PhysicalBody(_world, type, position,radius,_data);
 	_graphicalBody = new GraphicalBody(loc, sf::Vector2f(position.x, position.y), sf::Vector2f(size.x, size.y),radius);
 	_maxHealth = health;
+	_currentHealth = _maxHealth;
 }
 
 Entity::Entity(b2World* world, sf::RenderWindow* win,float health, sf::Color color, b2BodyType type, b2Vec2 position, b2Vec2 size)
@@ -27,6 +29,7 @@ Entity::Entity(b2World* world, sf::RenderWindow* win,float health, sf::Color col
 	_physicalBody = new PhysicalBody(_world, type, position, size);
 	_graphicalBody = new GraphicalBody(color, sf::Vector2f(position.x, position.y), sf::Vector2f(size.x, size.y));
 	_maxHealth = health;
+	_currentHealth = _maxHealth;
 }
 
 Entity::~Entity()
@@ -46,3 +49,23 @@ void Entity::draw()
 {
 	_graphicalBody->draw(*_win);
 }
+
+b2Vec2 Entity::getLinearVelocity()
+{
+	return _physicalBody->getLinearVelocity();
+}
+
+void Entity::takeDamage(float damage)
+{
+	_currentHealth -= damage;
+	if (_currentHealth <= 0)
+		dead = true;
+}
+
+bool Entity::isDead()
+{
+	if (dead)
+		delete this;
+	return dead;
+}
+

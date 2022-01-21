@@ -56,7 +56,7 @@ void Level::createLevel(std::string str)
 					}
 					else if (objectGroupName == "stone")
 					{
-						Entity* entity = new Entity(_world, _win, stoneHealth, "Sprites/stone.png", type, pos, size);
+						Entity* entity = new Entity(_world, _win, stoneHealth, "Sprites/stone.png", type, pos, size,"stone");
 						_stones.push_back(entity);
 					}
 					else if (objectGroupName == "slingshot")
@@ -65,7 +65,7 @@ void Level::createLevel(std::string str)
 					}
 					else if (objectGroupName == "pig")
 					{
-						Entity* entity = new Entity(_world, _win, pigHealth, "Sprites/pig.png", type, pos,size, size.x);
+						Entity* entity = new Entity(_world, _win, pigHealth, "Sprites/pig.png", type, pos,size, size.x,"pig");
 						_pigs.push_back(entity);
 					}
 					object = object->NextSiblingElement("object");
@@ -78,6 +78,7 @@ void Level::createLevel(std::string str)
 
 void Level::update()
 {
+	handleDead();
 	int woodSize = _woods.size();
 	for (int i = 0; i < woodSize; i++)
 	{
@@ -116,4 +117,32 @@ void Level::draw()
 		_pigs[i]->draw();
 	}
 	_slingshot->draw();
+}
+
+void Level::handleDead()
+{
+	_woods.erase(
+		std::remove_if(
+			_woods.begin(),
+			_woods.end(),
+			[](Entity* e) { return e->isDead();}
+		),
+		_woods.end()
+	);
+	_stones.erase(
+		std::remove_if(
+			_stones.begin(),
+			_stones.end(),
+			[](Entity* e) { return e->isDead(); }
+		),
+		_stones.end()
+	);
+	_pigs.erase(
+		std::remove_if(
+			_pigs.begin(),
+			_pigs.end(),
+			[](Entity* e) { return e->isDead(); }
+		),
+		_pigs.end()
+	);
 }

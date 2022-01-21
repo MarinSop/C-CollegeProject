@@ -21,6 +21,7 @@ public:
 	void setAwake(bool state);
 	bool isAwake();
 	void setEnabled(bool state);
+	b2Vec2 getLinearVelocity();
 
 	void applyImpulse(b2Vec2 vec);
 

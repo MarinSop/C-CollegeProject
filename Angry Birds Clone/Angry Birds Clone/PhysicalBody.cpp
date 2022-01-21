@@ -83,6 +83,11 @@ void PhysicalBody::setEnabled(bool state)
 	_body->SetEnabled(state);
 }
 
+b2Vec2 PhysicalBody::getLinearVelocity()
+{
+	return _body->GetLinearVelocity();
+}
+
 void PhysicalBody::applyImpulse(b2Vec2 vec)
 {
 	_body->ApplyLinearImpulseToCenter(vec, true);

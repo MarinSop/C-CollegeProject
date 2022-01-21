@@ -18,6 +18,7 @@ public:
 	void draw();
 
 private:
+	void handleDead();
 	std::vector<Entity*> _woods;
 	std::vector<Entity*> _stones;
 	std::vector<Entity*> _pigs;

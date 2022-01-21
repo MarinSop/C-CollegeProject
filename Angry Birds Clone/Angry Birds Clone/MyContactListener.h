@@ -8,5 +8,7 @@ class MyContactListener : public b2ContactListener
     void BeginContact(b2Contact* contact);
 
     void EndContact(b2Contact* contact);
+
+    void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse);
 };
 

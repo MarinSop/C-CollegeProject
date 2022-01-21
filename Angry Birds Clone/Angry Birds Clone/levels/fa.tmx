@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="2021.03.23" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="15">
+ <objectgroup id="2" name="wood">
+  <object id="11" name="wood" type="dynamic" x="298.667" y="547" width="14" height="110.667"/>
+ </objectgroup>
+ <objectgroup id="3" name="stone"/>
+ <objectgroup id="5" name="pig"/>
+ <objectgroup id="4" name="slingshot">
+  <object id="7" type="static" x="96" y="530.667" width="64" height="128"/>
+ </objectgroup>
+</map>

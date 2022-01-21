@@ -1,6 +1,7 @@
 #pragma once
 #include "PhysicalBody.h"
 #include "GraphicalBody.h"
+#include <iostream>
 class Entity
 {
 public:
@@ -11,7 +12,9 @@ public:
 
 	void update();
 	void draw();
-
+	b2Vec2 getLinearVelocity();
+	void takeDamage(float damage);
+	bool isDead();
 private:
 	sf::RenderWindow* _win;
 	b2World* _world;
@@ -20,6 +23,6 @@ private:
 	float _maxHealth;
 	float _currentHealth = _maxHealth;
 	UserData* _data;
-
+	bool dead = false;
 };
 
