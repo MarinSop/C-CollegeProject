@@ -92,4 +92,19 @@ void Bird::setEnabled(bool state)
 	_physicalBody->setEnabled(state);
 }
 
+sf::Vector2f Bird::getPosition()
+{
+	return sf::Vector2f(_physicalBody->getPositionScaled().x, _physicalBody->getPositionScaled().y);
+}
+
+float Bird::getRadius()
+{
+	return 0.0f;
+}
+
+sf::Vector2f Bird::getSizeScaled()
+{
+	return _graphicalBody->getSize();
+}
+
 

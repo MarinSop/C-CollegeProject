@@ -24,6 +24,21 @@ bool InputManager::isMouseButtonDownOnce(sf::Mouse::Button button)
     return false;
 }
 
+bool InputManager::isMouseButtonDownOnceSecond(sf::Mouse::Button button)
+{
+    if (sf::Mouse::isButtonPressed(button) && !isMousePressedSecond)
+    {
+        isMousePressedSecond = true;
+        return true;
+    }
+    else if (sf::Mouse::isButtonPressed(button) && isMousePressedSecond)
+    {
+        return false;
+    }
+    isMousePressedSecond = false;
+    return false;
+}
+
 bool InputManager::isMouseButtonReleased(sf::Mouse::Button button)
 {
     if (!sf::Mouse::isButtonPressed(button) && isMousePressed)

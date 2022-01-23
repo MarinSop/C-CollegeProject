@@ -14,6 +14,8 @@ public:
 	void setTrajectoryPointsPosition(b2Vec2 impulse);
 	void slingControl();
 
+	bool areBirdsUsed();
+
 private:
 	std::vector<Bird*> _birds;
 	sf::Texture* _texMain;

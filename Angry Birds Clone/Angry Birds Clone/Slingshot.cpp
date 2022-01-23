@@ -138,29 +138,33 @@ void Slingshot::slingControl()
 	{
 		if (_input->isMouseButtonDown(sf::Mouse::Left))
 		{
-			_aiming = true;
-			float dX = sf::Mouse::getPosition(*_win).x - _birdShootPosition.x;
-			float dY = sf::Mouse::getPosition(*_win).y - _birdShootPosition.y;
-			double angleRad = atan2(dY, dX);
-			if (angleRad < 0)
-				angleRad = abs(angleRad);
-			else
-				angleRad = 2 * b2_pi - angleRad;
-			double angleDeg = angleRad * 180 / b2_pi;
-			if (angleDeg < 115.0f)
-				angleDeg = 115.0f;
-			else if (angleDeg > 255.0f)
-				angleDeg = 255.0f;
-			float distance = sqrt(((sf::Mouse::getPosition(*_win).x - _birdShootPosition.x) * (sf::Mouse::getPosition(*_win).x - _birdShootPosition.x)) + ((sf::Mouse::getPosition(*_win).y - _birdShootPosition.y) * (sf::Mouse::getPosition(*_win).y - _birdShootPosition.y)));
-			if (distance > _maxStrech)
-				distance = _maxStrech;
-			float force = (distance / _maxStrech) * _maxForce;
-			impulse = b2Vec2(force * sin(angleDeg * (b2_pi / 180) - b2_pi / 2), force * cos(angleDeg * (b2_pi / 180) - b2_pi / 2));
-			setTrajectoryPointsPosition(impulse);
+			if (_aiming || (sf::Mouse::getPosition(*_win).x > (activeBird->getPosition().x - activeBird->getSizeScaled().x / 2)
+				&& sf::Mouse::getPosition(*_win).x < (activeBird->getPosition().x + activeBird->getSizeScaled().x / 2)
+				&& sf::Mouse::getPosition(*_win).y >(activeBird->getPosition().y - activeBird->getSizeScaled().y / 2)
+				&& sf::Mouse::getPosition(*_win).y < (activeBird->getPosition().y + activeBird->getSizeScaled().y / 2)))
+			{
+				_aiming = true;
+				float dX = sf::Mouse::getPosition(*_win).x - _birdShootPosition.x;
+				float dY = sf::Mouse::getPosition(*_win).y - _birdShootPosition.y;
+				double angleRad = atan2(dY, dX);
+				if (angleRad < 0)
+					angleRad = abs(angleRad);
+				else
+					angleRad = 2 * b2_pi - angleRad;
+				double angleDeg = angleRad * 180 / b2_pi;
+				if (angleDeg < 115.0f)
+					angleDeg = 115.0f;
+				else if (angleDeg > 255.0f)
+					angleDeg = 255.0f;
+				float distance = sqrt(((sf::Mouse::getPosition(*_win).x - _birdShootPosition.x) * (sf::Mouse::getPosition(*_win).x - _birdShootPosition.x)) + ((sf::Mouse::getPosition(*_win).y - _birdShootPosition.y) * (sf::Mouse::getPosition(*_win).y - _birdShootPosition.y)));
+				if (distance > _maxStrech)
+					distance = _maxStrech;
+				float force = (distance / _maxStrech) * _maxForce;
+				impulse = b2Vec2(force * sin(angleDeg * (b2_pi / 180) - b2_pi / 2), force * cos(angleDeg * (b2_pi / 180) - b2_pi / 2));
+				setTrajectoryPointsPosition(impulse);
+			}
 		}
-		else
-			_aiming = false;
-		if (_input->isMouseButtonReleased(sf::Mouse::Left))
+		if (_input->isMouseButtonReleased(sf::Mouse::Left) && _aiming)
 		{
 			activeBird->setEnabled(true);
 			activeBird->applyLinearImpulse(impulse);
@@ -180,6 +184,12 @@ void Slingshot::slingControl()
 					break;
 				}
 			}
+			_aiming = false;
 		}
 	}
+}
+
+bool Slingshot::areBirdsUsed()
+{
+	return _birds.empty() && !activeBird;
 }

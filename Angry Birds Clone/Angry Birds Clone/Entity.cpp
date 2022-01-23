@@ -43,6 +43,12 @@ void Entity::update()
 {
 	_graphicalBody->setPosition(sf::Vector2f(_physicalBody->getPositionScaled().x, _physicalBody->getPositionScaled().y));
 	_graphicalBody->setRotation(_physicalBody->getAngle() * 180 / b2_pi);
+	if (_physicalBody->getPositionScaled().x + _graphicalBody->getSize().x / 2 > _win->getSize().x ||
+		_physicalBody->getPositionScaled().x + _graphicalBody->getSize().x / 2 < 0 ||
+		_physicalBody->getPositionScaled().y - _graphicalBody->getSize().y / 2 > _win->getSize().y)
+	{
+		dead = true;
+	}
 }
 
 void Entity::draw()

@@ -12,12 +12,19 @@ public:
 	Level(std::string loc, b2World* world, sf::RenderWindow* win,InputManager* input);
 	~Level();
 
-	void createLevel(std::string str);
 
 	void update();
 	void draw();
 
+	bool isGameWon();
+	bool isGameLost();
+
+	bool isRestartClicked();
+	bool isMenuClicked();
+
 private:
+	void createLevel(std::string str);
+
 	void handleDead();
 	std::vector<Entity*> _woods;
 	std::vector<Entity*> _stones;
@@ -32,5 +39,15 @@ private:
 	float woodHealth = 100.0f;
 	float stoneHealth = 200.0f;
 	float pigHealth = 50.0f;
+	sf::Vector2f _tiledRes;
+	sf::Vector2f _gameRes;
+
+	float lostTimer = 5.0f;
+	float currLostTimer = lostTimer;
+
+	sf::Texture* _restartTex;
+	sf::Sprite* _restartSprite;
+	sf::Texture* _menuTex;
+	sf::Sprite* _menuSprite;
 };
 

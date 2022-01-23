@@ -45,6 +45,7 @@ GraphicalBody::GraphicalBody(std::string str, sf::Vector2f position,sf::Vector2f
 	_circleCollison->setFillColor(sf::Color::Transparent);
 	_circleCollison->setOutlineColor(sf::Color::Green);
 	_circleCollison->setOutlineThickness(2.0f);
+	_size = size;
 
 	_collision = nullptr;
 }

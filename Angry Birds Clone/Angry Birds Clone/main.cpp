@@ -12,14 +12,12 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(1024,768), "Angry birds");
     window.setFramerateLimit(60);
-    Game* game = new Game();
     b2Vec2 gravity(0.0f, 9.81f);
     b2World world(gravity);
     MyContactListener* myContactListener = new MyContactListener();
     world.SetContactListener(myContactListener);
 
-    InputManager input;
-    Level lvl = Level("levels/level1.tmx",&world,&window,&input);
+    Game* game = new Game(&world,&window);
     while (window.isOpen())
     {
         sf::Event event;
@@ -31,9 +29,15 @@ int main()
         }
         world.Step(1 / 60.f, 8, 3);
         window.clear(sf::Color(69, 179, 224));
-        lvl.update();
-        lvl.draw();
+        game->update();
+        game->draw();
         window.display();
+        if (game->exit())
+        {
+            delete game;
+            delete myContactListener;
+            window.close();
+        }
     }
 
     return 0;

@@ -19,6 +19,9 @@ public:
 	bool readyToDelete();
 	void setPosition(b2Vec2 pos);
 	void setEnabled(bool state);
+	sf::Vector2f getPosition();
+	float getRadius();
+	sf::Vector2f getSizeScaled();
 
 private:
 	PhysicalBody* _physicalBody;
