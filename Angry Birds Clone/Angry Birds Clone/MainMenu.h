@@ -1,7 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "InputManager.h"
-#include <iostream>
 class MainMenu
 {
 public:
@@ -36,6 +35,9 @@ private:
 
 	sf::Text* _text;
 	sf::Font* _font;
+
+	sf::Texture* _backgroundTex;
+	sf::Sprite* _backgroundSprite;
 
 	int lvlNum;
 };

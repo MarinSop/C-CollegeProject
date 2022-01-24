@@ -21,7 +21,7 @@ void MyContactListener::PostSolve(b2Contact* contact, const b2ContactImpulse* im
         float velY = contact->GetFixtureA()->GetBody()->GetLinearVelocity().y;
         float velocity = sqrt(velX * velX + velY * velY);
         float momentum = contact->GetFixtureA()->GetBody()->GetMass() * velocity;
-        if (momentum > 3.0f)
+        if (momentum > 1.0f)
         {
             if (bodyUserDataA->data == "wood")
             {
@@ -33,7 +33,7 @@ void MyContactListener::PostSolve(b2Contact* contact, const b2ContactImpulse* im
             }
             else if (bodyUserDataA->data == "pig")
             {
-                ((Entity*)bodyUserDataA->pointer)->takeDamage(abs(a * 0.2f * 50.0f));
+                ((Entity*)bodyUserDataA->pointer)->takeDamage(abs(a) * 0.2f * 50.0f);
             }
         }
     }
@@ -43,7 +43,7 @@ void MyContactListener::PostSolve(b2Contact* contact, const b2ContactImpulse* im
         float velY = contact->GetFixtureB()->GetBody()->GetLinearVelocity().y;
         float velocity = sqrt(velX * velX + velY * velY);
         float momentum = contact->GetFixtureB()->GetBody()->GetMass() * velocity;
-        if (momentum> 3.0f)
+        if (momentum > 1.0f)
         {
             if (bodyUserDataB->data == "wood")
             {
@@ -55,7 +55,7 @@ void MyContactListener::PostSolve(b2Contact* contact, const b2ContactImpulse* im
             }
             else if (bodyUserDataB->data == "pig")
             {
-                ((Entity*)bodyUserDataB->pointer)->takeDamage(abs(b * 0.2f * 50.0f));
+                ((Entity*)bodyUserDataB->pointer)->takeDamage(abs(b) * 0.2f * 50.0f);
             }
         }
     }

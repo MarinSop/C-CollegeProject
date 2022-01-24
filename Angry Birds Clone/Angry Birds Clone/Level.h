@@ -4,7 +4,6 @@
 #include "Entity.h"
 #include "InputManager.h"
 #include "Slingshot.h"
-#include <iostream>
 class Level
 {
 public:
@@ -36,8 +35,8 @@ private:
 	sf::Texture* _backgroundTex;
 	sf::Sprite* _backgroundSprite;
 	Entity* _ground;
-	float woodHealth = 100.0f;
-	float stoneHealth = 200.0f;
+	float woodHealth = 150.0f;
+	float stoneHealth = 350.0f;
 	float pigHealth = 50.0f;
 	sf::Vector2f _tiledRes;
 	sf::Vector2f _gameRes;

@@ -1,7 +1,6 @@
 #pragma once
 #include "PhysicalBody.h"
 #include "GraphicalBody.h"
-#include <iostream>
 class Entity
 {
 public:

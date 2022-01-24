@@ -1,16 +1,11 @@
 #include <SFML/Graphics.hpp>
-#include "box2d/box2d.h"
 #include "Game.h"
-#include "Entity.h"
-#include "Level.h"
-#include "Slingshot.h"
-#include "InputManager.h"
 #include "MyContactListener.h"
 #define SCALE 30.0f
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1024,768), "Angry birds");
+    sf::RenderWindow window(sf::VideoMode(1280,800), "Angry birds");
     window.setFramerateLimit(60);
     b2Vec2 gravity(0.0f, 9.81f);
     b2World world(gravity);

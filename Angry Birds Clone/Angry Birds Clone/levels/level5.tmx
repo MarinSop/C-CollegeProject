@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="2021.03.23" orientation="orthogonal" renderorder="right-down" width="40" height="25" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="63">
+ <objectgroup id="2" name="wood">
+  <object id="20" type="dynamic" x="901" y="485" width="12" height="66"/>
+  <object id="21" type="dynamic" x="992" y="486" width="12" height="66"/>
+  <object id="23" type="dynamic" x="925.5" y="427.5" width="12" height="34"/>
+  <object id="24" type="dynamic" x="968.5" y="427.5" width="12" height="34"/>
+  <object id="25" type="dynamic" x="924.5" y="409.5" width="58" height="12"/>
+  <object id="31" type="dynamic" x="837.081" y="493.044" width="12" height="183"/>
+  <object id="34" type="dynamic" x="745.581" y="492.544" width="12" height="183"/>
+  <object id="43" type="dynamic" x="827" y="427" width="12" height="34"/>
+  <object id="44" type="dynamic" x="870" y="427" width="12" height="34"/>
+  <object id="45" type="dynamic" x="826" y="409" width="58" height="12"/>
+  <object id="47" type="dynamic" x="708" y="427" width="12" height="34"/>
+  <object id="48" type="dynamic" x="751" y="427" width="12" height="34"/>
+  <object id="49" type="dynamic" x="707" y="409" width="58" height="12"/>
+  <object id="59" type="dynamic" x="594" y="565" width="38" height="38"/>
+  <object id="60" type="dynamic" x="594" y="520" width="38" height="38"/>
+  <object id="62" type="dynamic" x="595" y="475" width="38" height="38"/>
+ </objectgroup>
+ <objectgroup id="3" name="stone">
+  <object id="17" type="dynamic" x="880" y="574" width="20" height="102"/>
+  <object id="18" type="dynamic" x="1005" y="574" width="20" height="102"/>
+  <object id="19" type="dynamic" x="879" y="556" width="147" height="12"/>
+  <object id="54" type="dynamic" x="675" y="611" width="64" height="64"/>
+  <object id="55" type="dynamic" x="766" y="611" width="64" height="64"/>
+  <object id="56" type="dynamic" x="656" y="492" width="12" height="183"/>
+  <object id="57" type="dynamic" x="659.5" y="469" width="347" height="12"/>
+  <object id="58" type="dynamic" x="580" y="608" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup id="4" name="pig">
+  <object id="29" type="dynamic" x="932" y="507" width="38" height="38">
+   <ellipse/>
+  </object>
+  <object id="30" type="dynamic" x="921" y="609" width="67" height="67">
+   <ellipse/>
+  </object>
+  <object id="41" type="dynamic" x="776" y="564" width="38" height="38">
+   <ellipse/>
+  </object>
+  <object id="42" type="dynamic" x="691" y="562" width="38" height="38">
+   <ellipse/>
+  </object>
+  <object id="51" type="dynamic" x="945" y="441" width="17" height="17">
+   <ellipse/>
+  </object>
+  <object id="52" type="dynamic" x="846.5" y="440.5" width="17" height="17">
+   <ellipse/>
+  </object>
+  <object id="53" type="dynamic" x="727.5" y="440.5" width="17" height="17">
+   <ellipse/>
+  </object>
+  <object id="61" type="dynamic" x="606.5" y="450.5" width="17" height="17">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="slingshot">
+  <object id="1" type="static" x="127.091" y="559.45" width="64" height="128"/>
+ </objectgroup>
+</map>

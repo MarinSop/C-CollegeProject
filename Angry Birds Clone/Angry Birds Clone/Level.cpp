@@ -48,6 +48,10 @@ Level::~Level()
 	delete _backgroundSprite;
 	delete _backgroundTex;
 	delete _ground;
+	delete _restartTex;
+	delete _restartSprite;
+	delete _menuTex;
+	delete _menuSprite;
 }
 
 void Level::createLevel(std::string str)
@@ -106,7 +110,6 @@ void Level::createLevel(std::string str)
 					else if (objectGroupName == "slingshot")
 					{
 						_slingshot = new Slingshot(_win,_input,_world, "Sprite/slingshot.png",sf::Vector2f(pos.x,pos.y),sf::Vector2f(size.x,size.y));
-					std::cout << x << " " << y << std::endl;
 					}
 					else if (objectGroupName == "pig")
 					{

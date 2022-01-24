@@ -5,6 +5,12 @@ MainMenu::MainMenu(sf::RenderWindow* win, InputManager* input,int lvl)
 	lvlNum = lvl;
 	_win = win;
 	_input = input;
+
+	_backgroundTex = new sf::Texture();
+	_backgroundTex->loadFromFile("Sprites/mainmenubackground.jpg");
+	_backgroundSprite = new sf::Sprite(*_backgroundTex);
+	_backgroundSprite->setScale((1.0f / _backgroundTex->getSize().x) * win->getSize().x, (1.0f / _backgroundTex->getSize().y) * win->getSize().y);
+
 	_playTex = new sf::Texture();
 	_playTex->loadFromFile("Sprites/play.png");
 	_playSprite = new sf::Sprite(*_playTex);
@@ -32,10 +38,8 @@ MainMenu::MainMenu(sf::RenderWindow* win, InputManager* input,int lvl)
 	_textboxSprite->setPosition(_win->getSize().x * 0.5f - _textboxTex->getSize().x * 0.5f, _win->getSize().y * 0.51f - _textboxTex->getSize().x * 0.5f);
 
 	_font = new sf::Font();
-	if (!_font->loadFromFile("Roboto-Regular.ttf"))
-	{
-		std::cout << "Font not found" << std::endl;
-	}
+	_font->loadFromFile("Roboto-Regular.ttf");
+
 	_text = new sf::Text(std::to_string(lvlNum),*_font,30.0f);
 	_text->setPosition(_textboxSprite->getPosition().x + _textboxTex->getSize().x*0.5f-15.0f, _textboxSprite->getPosition().y + _textboxTex->getSize().y*0.5f-15.0f);
 
@@ -43,10 +47,20 @@ MainMenu::MainMenu(sf::RenderWindow* win, InputManager* input,int lvl)
 
 MainMenu::~MainMenu()
 {
+	delete _backgroundTex;
+	delete _backgroundSprite;
 	delete _playTex;
 	delete _playSprite;
 	delete _exitTex;
 	delete _exitSprite;
+	delete _leftTex;
+	delete _leftSprite;
+	delete _rightTex;
+	delete _rightSprite;
+	delete _textboxTex;
+	delete _textboxSprite;
+	delete _text;
+	delete _font;
 }
 
 bool MainMenu::isPlayClicked()
@@ -107,6 +121,7 @@ bool MainMenu::isLeftClicked()
 
 void MainMenu::draw()
 {
+	_win->draw(*_backgroundSprite);
 	_win->draw(*_playSprite);
 	_win->draw(*_exitSprite);
 	_win->draw(*_leftSprite);
